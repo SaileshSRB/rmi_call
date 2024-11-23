@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
 import javafx.stage.Stage;
 import org.library.common.LibraryService;
 
@@ -32,6 +33,7 @@ public class LibraryApp extends Application {
                     createBorrowBookTab(),
                     createReturnBookTab(),
                     createAddBookTab(),
+
                     createListBooksTab(),
                     createListBorrowedBooksTab()
             );
@@ -51,12 +53,15 @@ public class LibraryApp extends Application {
         }
     }
 
+
     // Create Search Book Tab
+
     private Tab createSearchBookTab() {
         Tab tab = new Tab("Search Book");
         tab.setClosable(false);
 
         VBox layout = new VBox(10);
+
         layout.setPadding(new Insets(20));
 
         TextField searchField = new TextField();
@@ -70,6 +75,7 @@ public class LibraryApp extends Application {
 
         Label resultLabel = new Label();
         resultLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #333;");
+
 
         searchButton.setOnAction(e -> {
             try {
@@ -90,12 +96,15 @@ public class LibraryApp extends Application {
         return tab;
     }
 
+
     // Create Borrow Book Tab
+
     private Tab createBorrowBookTab() {
         Tab tab = new Tab("Borrow Book");
         tab.setClosable(false);
 
         VBox layout = new VBox(10);
+
         layout.setPadding(new Insets(20));
 
         TextField bookIDField = new TextField();
@@ -113,6 +122,7 @@ public class LibraryApp extends Application {
 
         Label resultLabel = new Label();
         resultLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #333;");
+
 
         borrowButton.setOnAction(e -> {
             try {
@@ -134,12 +144,15 @@ public class LibraryApp extends Application {
         return tab;
     }
 
+
     // Create Return Book Tab
+
     private Tab createReturnBookTab() {
         Tab tab = new Tab("Return Book");
         tab.setClosable(false);
 
         VBox layout = new VBox(10);
+
         layout.setPadding(new Insets(20));
 
         TextField bookIDField = new TextField();
@@ -157,6 +170,7 @@ public class LibraryApp extends Application {
 
         Label resultLabel = new Label();
         resultLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #333;");
+
 
         returnButton.setOnAction(e -> {
             try {
@@ -178,12 +192,15 @@ public class LibraryApp extends Application {
         return tab;
     }
 
+
     // Create Add Book Tab
+
     private Tab createAddBookTab() {
         Tab tab = new Tab("Add Book");
         tab.setClosable(false);
 
         VBox layout = new VBox(10);
+
         layout.setPadding(new Insets(20));
 
         TextField titleField = new TextField();
@@ -202,6 +219,7 @@ public class LibraryApp extends Application {
         Label resultLabel = new Label();
         resultLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #333;");
 
+
         addButton.setOnAction(e -> {
             try {
                 String title = titleField.getText();
@@ -210,14 +228,18 @@ public class LibraryApp extends Application {
                     boolean success = libraryService.addBook(title, author);
                     resultLabel.setText(success ? "Book added successfully." : "Failed to add book.");
                 } else {
+
                     showError("Please enter both title and author.");
+
                 }
             } catch (Exception ex) {
                 showError("Error adding book: " + ex.getMessage());
             }
         });
 
+
         layout.getChildren().addAll(new Label("Book Title:"), titleField, new Label("Author:"), authorField, addButton, resultLabel);
+
         tab.setContent(layout);
         return tab;
     }
@@ -246,6 +268,7 @@ public class LibraryApp extends Application {
                 showError("Error listing books: " + ex.getMessage());
             }
         });
+
 
         layout.getChildren().addAll(listBooksButton, resultLabel);
         tab.setContent(layout);
@@ -302,4 +325,6 @@ public class LibraryApp extends Application {
         launch(args);
     }
 }
+
 /* new changes */
+

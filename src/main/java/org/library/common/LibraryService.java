@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface LibraryService extends Remote {
 
+
     // Method to search for a book by title
     String searchBook(String title) throws RemoteException;
 
@@ -23,4 +24,5 @@ public interface LibraryService extends Remote {
 
     // Method to list all borrowed books by a specific user
     List<String> listBorrowedBooks(String userId) throws RemoteException;
+
 }
